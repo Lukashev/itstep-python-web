@@ -1,0 +1,7 @@
+/* CUSTOM STYLES */
+
+@media screen and (max-width: 768px) {
+    .container .col-md-4:not(:first-child) {
+        display: none;
+    }
+}
