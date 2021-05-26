@@ -245,3 +245,314 @@
 #
 # print(list(zip(l1, l2)))
 # print(dict(zip(l1, l2)))
+# # «амыкание
+# hello = 1
+# def foo():
+#     x = 10
+#     def bar():
+#         y = 20
+#         return x, y, hello
+#     def baz():
+#         y = 20
+#         return x, y, hello
+#     return bar
+#
+# a = foo()
+# print(a(), a.__closure__[0].cell_contents)
+
+# def calc(a):
+#
+#     def mul(b):
+#         return a * b
+#
+#     def div(b):
+#         return a / b
+#
+#     def plus(b):
+#         return a + b
+#
+#     return mul, div, plus
+#
+# [mul, div, plus] = calc(8)
+#
+# print(mul(10))
+# print(div(10))
+# print(plus(10))
+
+# def foo():
+#     x = 10
+#     def bar():
+#         y = 22
+#         x = 9
+#         return x + y
+#     return bar
+#
+# print(foo()())
+
+#  аррирование
+
+# def sum(a):
+#     def foo(b):
+#         def bar(c):
+#             return a + b + c
+#         return bar
+#     return foo
+#
+# print(sum(10)(20)(30))
+
+# def sum(a):
+#     def foo(b):
+#         def bar(c):
+#             return a + b + c
+#         return bar
+#     return foo
+#
+# print(sum(10)(20)(30))
+
+# def sum(a, b, c):
+#     return a + b + c
+
+
+# def curry(func):
+#     def inner(*args1):
+#         if len(args1) == func.__code__.co_argcount:
+#             return func(*args1)
+#         else:
+#             def bar(*args2):
+#                 return inner(*(args1 + args2))
+#             return bar
+#     return inner
+#
+#
+# fn = curry(sum)
+#
+# print(fn(10)(20)(30))
+# print(fn(10, 20, 30))
+# print(fn(10, 20)(30))
+# print(sum(10, 20, 30))
+# print(sum(10,20)(30))
+
+# ƒекораторы
+
+# from datetime import datetime as dt
+#
+#
+# def get_time(func):
+#     def inner():
+#         start = dt.now()
+#         res = func()
+#         print(dt.now() - start)
+#         return res
+#     return inner
+#
+#
+# @get_time
+# def test1():
+#     res = [x for x in range(10000) if x % 2 == 0]
+#     return res
+#
+#
+# @get_time
+# def test2():
+#     result = []
+#     for x in range(10000):
+#         if x % 2 == 0:
+#             result.append(x)
+#     return result
+#
+#
+# print(test1())
+# print(test2())
+#
+# fn = get_time(test1)
+# print(fn())
+
+#  ортежи, словари, множества
+
+# a = (1, 2, 3)
+#
+# print(a)
+#
+# a = tuple("Hello World")
+# print(a)
+#
+# a = tuple([1, 10, 2])
+# print(a)
+#
+# a = 1, 2, 3
+# print(a)
+#
+# # a[0] = 100
+#
+# print(a + (2, 4, 5))
+#
+# b = (1, 2, 3)
+# c = [1, 2, 3, 'abc']
+#
+# print(a.__sizeof__(), c.__sizeof__())
+
+# a = ([1, 2], [1, 2])
+#
+# a[0][0] = 100
+#
+# a[0] = [2, 3]
+#
+# print(a)
+
+# a = {}
+#
+# print(a)
+#
+# a = {'a': 1, 'b': 2}
+#
+# print(a)
+#
+# key = 'a'
+#
+# a = {key: 1, 'b': 10}
+#
+# print(a)
+#
+# a['a'] = 100
+#
+# print(a)
+#
+# a = dict(a=5, c=10, b=2**3)
+#
+# print(a)
+
+# a = dict([('a', 1), ('b', 2), ('c', 3)])
+#
+# print(a)
+
+
+# a = {i: val**2 for i, val in enumerate([20, 30, 5])}
+#
+# print(a)
+
+# a = { i: i for i in range(2, 10) if i % 2 == 0}
+# print(a)
+
+# a = { 'a': 20, 'b': 30, 'c': 40 }
+#
+# for key in a:
+#     print(key)
+
+# a = { 'a': 20, 'b': 30, 'c': 40 }
+#
+# for key in a:
+#     print(a[key])
+
+# print(2 in (2, 3, 5))
+
+# print('a' in { 'a': 1, 'b': '2'})
+
+# a = {'a': 20, 'b': 30, 'c': 40}
+#
+# b = a.copy()
+#
+# b['a'] = 100
+#
+# print(id(a), id(b), a, b)
+
+# a = {'a': 20, 'b': 30, 'c': 40}
+#
+# b = a.pop('a')
+#
+# print(b)
+
+# a = {'a': 20, 'b': 30, 'c': 40}
+#
+# b = a.popitem()
+#
+# print(b)
+
+# a = {'a': 20, 'b': 30, 'c': 40}
+#
+# b = (1, 2, 3)
+#
+# a[b] = 100
+#
+# print(a)
+# print(a[b])
+# print(a[(1,2,3)])
+
+# a = {'a': 20, 'b': 30, 'c': 40}
+
+# print(a['e'])
+# print(a.get('e'))
+
+# a = {'a': 20, 'b': 30, 'c': 40}
+
+# a.clear()
+#
+# print(a)
+
+# print(a.keys())
+#
+# for key in a.keys():
+#     print(key)
+#
+# for val in a.items():
+#     print(val)
+#
+# for val in a.values():
+#     print(val)
+
+# b = {}.fromkeys(['c', 'b'], 100)
+#
+# print(b)
+
+# b = {}.fromkeys([x for x in range(10)], 100)
+#
+# print(b)
+
+# a = [1, 1, 2, 3, 6, 6]
+#
+# print(set(a))
+
+# a = [(1, 2), (1, 2)]
+# print(set(a))
+
+# a = {1, 2, 3}
+#
+# print(a.difference({1, 2}))
+
+# a = { 1, 2, 3}
+#
+# print(a.intersection({1, 2}))
+
+# a = { 1, 2, 3}
+# print(a.isdisjoint({4, 5, 6}))
+
+# A = {1, 2}
+# B = {2, 3, 4}
+# C = {5}
+#
+# print(A.union(B).union(C))
+
+
+# ¬ы живете в городе, где все дороги расположены в идеальной сетке.
+# ¬ы пришли на прием на 10 минут раньше, поэтому решили прогул€тьс€.
+# √ород предоставл€ет своим гражданам приложение дл€ построени€ пешеходов
+# на их телефонах - каждый раз, когда вы нажимаете кнопку, он отправл€ет
+# вам массив однобуквенных строк, представл€ющих маршруты ходьбы
+# (например, ['n', 's', 'w', 'е']).
+# ¬ы всегда проходите только один квартал дл€ каждой буквы (направлени€),
+# и вы знаете, что вам понадобитс€ 1 минута, чтобы пройти один городской
+# квартал.
+# ѕоэтому создайте функцию, котора€ вернет true, если прогулка, которую
+# дает вам приложение, займет у вас ровно 10 минут  и, конечно же, вернет
+# вас в исходную точку. ¬ противном случае верните false.
+#
+# ѕримечание: вы всегда будете получать действительный массив, содержащий
+# случайный набор букв направлени€ (только Ђnї, Ђsї, Ђeї или Ђwї).
+# ѕустого массива никогда не будет.
+
+# def is_valid_walk(walk):
+#     pass
+
+# print(is_valid_walk(['w','e','w','e','w','e','w','e','w','e','w','e']));  False
+# print(is_valid_walk(['n','s','n','s','n','s','n','s','n','s'])); // True
+# print(is_valid_walk(['w'])); // False
+# print(is_valid_walk(['n','n','n','s','n','s','n','s','n','s'])); // False
