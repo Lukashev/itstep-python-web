@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+</head>
+<body>
+    <h1>{{ title }}</h1>
+    <ul>
+        {% for section in section_list %}
+            {% if section != 'recipes' %}
+                <li><a href="/{{ section }}">{{ section | upper }}</a></li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+    <h3>Daily Recipe</h3>
+    <ul>
+        {% for action in action_list %}
+        <li>{{ action }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
