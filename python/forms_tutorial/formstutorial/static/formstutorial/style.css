@@ -2,3 +2,12 @@ form {
     display: flex;
     flex-direction: column;
 }
+
+.matrix-table {
+    border-collapse: collapse;
+}
+
+.matrix-table td {
+    padding: 10px;
+    border: 1px solid;
+}

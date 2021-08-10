@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TASK 3</title>
+</head>
+<body>
+    {% if response  %}
+        <table>
+            <thead>
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Age</th>
+                    <th>Gender</th>
+                    <th>Email</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{response.firstname}}</td>
+                    <td>{{response.lastname}}</td>
+                    <td>{{response.age}}</td>
+                    <td>{{response.gender}}</td>
+                    <td>{{response.email}}</td>
+                </tr>
+            </tbody>
+        </table>
+    {% else %}
+        <p>Enter profile data:</p>
+    {% endif %}
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button>Submit</button>
+    </form>
+</body>
+</html>
