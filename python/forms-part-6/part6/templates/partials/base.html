@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <title>{% firstof title "Django Forms Part 6 Tutorial" %}</title>
+    <link rel="stylesheet" href="{% static 'bootstrap.min.css' %}">
+</head>
+<body>
+    {% block content %}
+    <!-- There should be our application views -->
+    {% endblock %}
+</body>
+</html>
