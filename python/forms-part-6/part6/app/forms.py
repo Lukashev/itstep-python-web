@@ -84,3 +84,16 @@ class WaterDeliveryForm(UserForm):
         label='Объем воды',
         initial=5
     )
+
+# search form
+class SearchForm(forms.Form):
+    search_query = forms.CharField(
+        widget=forms.TextInput(
+            attrs={
+                'class': 'form-control',
+                'type': 'search'
+            }
+        ),
+        label='Поиск книги',
+        required=False
+    )

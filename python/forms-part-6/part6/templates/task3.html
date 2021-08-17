@@ -1,0 +1,46 @@
+{% extends 'partials/base.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <form method="post" action="/task3?page=1">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button class="btn btn-success">Поиск</button>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <h4>Найдено {{search_result_count}} книг</h4>
+    <div class="row">
+        {% for book in current_books %}
+        <div class="col-md-3">
+            <div class="card mt-4">
+                <img src="{{book.image}}" class="card-img-top" height="320" alt="{{book.image}}" title="{{book.title}}">
+                <div class="card-body">
+                    <h6 class="card-title">{{book.title|truncatechars:20}}</h6>
+                    <p class="card-text">{{book.price}}</p>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <h4>Список книг пуст...</h4>
+        {% endfor %}
+    </div>
+    <nav>
+        <ul class="pagination mt-4">
+            <!--        <li class="page-item active" aria-current="page">-->
+            <!--          <span class="page-link">1</span>-->
+            <!--        </li>-->
+            <!--        <li class="page-item"><a class="page-link" href="#">2</a></li>-->
+            {% for num in pagination_count %}
+            <li class="page-item {% if request.GET.page == num|stringformat:'i' %} active {% endif %}">
+                <a class="page-link" href="/task3?page={{num}}&search_query={{search_query}}">{{num}}</a>
+            </li>
+            {% endfor %}
+        </ul>
+    </nav>
+</div>
+{% endblock %}
