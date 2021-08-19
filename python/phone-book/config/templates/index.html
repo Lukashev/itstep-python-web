@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row">
+        {% for book in phone_book_list %}
+        <div class="col-md-6">
+            <div class="card mb-4">
+                <form action="{% url 'phone_book-list' %}" method="post" class="mt-4" style="padding-left: 20px;">
+                    {% csrf_token %}
+                    <input type="hidden" name="id" value="{{book.id}}">
+                    <button class="btn btn-danger">X</button>
+                </form>
+                <div class="card-body">
+                    <h5 class="card-title">{{book.first_name}}&nbsp;{{book.last_name}}</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">{% firstof book.email "N/A" %}</h6>
+                    <ul class="list-group">
+                        <li class="list-group-item">Note: {{book.note}}</li>
+                        <li class="list-group-item">Phone Number: {{book.phone_number}}</li>
+                    </ul>
+                    <!--                <a href="#" class="card-link">Card link</a>-->
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+
+    </div>
+</div>
+{% endblock %}
