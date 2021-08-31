@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <form method="post">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <input type="hidden" name="id" value="{{ contact_id }}">
+                    <button class="btn btn-info text-light">Обновить</button>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
