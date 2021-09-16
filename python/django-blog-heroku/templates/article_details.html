@@ -1,0 +1,26 @@
+{% extends './partials/base.html' %}
+
+{% block content %}
+<div class="row mt-4">
+    <div class="col-lg-9">
+        <h3 class="mb-4">{{ article.title }}</h3>
+        {% if article.image %}
+        <img src="{{ article.image.url }}" alt="{{ article.image.url }}" width="100%">
+        {% else %}
+        <img src="https://picsum.photos/seed/picsum/783/440" width="100%" alt="">
+        {% endif %}
+        <div class="d-flex mt-3 mb-3 w-100 justify-content-between">
+            <span class="badge bg-primary p-3">Дата публикации: {{ article.created_at }}</span>
+            <span class="badge bg-secondary p-3">Дата обновления: {{ article.updated_at }}</span>
+            <span class="badge bg-info p-3">Категория: {{ article.category }}</span>
+        </div>
+        <hr>
+        {% autoescape off %}
+        <p>{{ article.content }}</p>
+        {% endautoescape %}
+    </div>
+    <div class="col-lg-3">
+        {% include './partials/sidebar.html' with categories=categories %}
+    </div>
+</div>
+{% endblock %}

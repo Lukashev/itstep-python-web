@@ -1,0 +1,12 @@
+<ul class="list-group">
+    <li class="list-group-item">
+        <a href="/" class="category-link">Все категории</a>
+    </li>
+    {% for category in categories %}
+    <li class="list-group-item">
+        <a class="category-link" href="{{ category.get_absolute_url }}">{{ category }}</a>
+    </li>
+    {% empty %}
+    <li>Список категорий пуст</li>
+    {% endfor %}
+</ul>

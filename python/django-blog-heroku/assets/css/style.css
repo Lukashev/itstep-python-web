@@ -1,0 +1,33 @@
+html, body {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+body > .container {
+    flex: 1;
+}
+
+.footer {
+    padding: 15px;
+    text-align: center;
+}
+
+.card-body img {
+    width: 100%;
+}
+
+.nav-link.active {
+    font-weight: bold;
+}
+
+.list-group-item.active a {
+    color: #ffffff;
+}
+
+.d-block {
+    display: block !important;
+}

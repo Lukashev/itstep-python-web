@@ -1,0 +1,16 @@
+{% extends './partials/base.html' %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-6 offset-md-3">
+        <fieldset class="mt-4">
+            <legend class="mb-3"></legend>
+            <form method="post" class="mt-4">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button class="btn btn-primary">Login</button>
+            </form>
+        </fieldset>
+    </div>
+</div>
+{% endblock %}
